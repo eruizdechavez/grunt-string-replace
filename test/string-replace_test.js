@@ -62,5 +62,40 @@ exports['string-replace'] = {
     test.equal(total, 20, 'normalized should have n * 2 items');
 
     test.done();
+  },
+  'str-replace': function(test) {
+    test.expect(2);
+    test.equal(grunt.helper('str-replace', 'Hello ASDF', 'ASDF', 'World'), 'Hello World', 'should replace a string');
+    test.equal(grunt.helper('str-replace', 'Hello ASDF', /asdf/i, 'World'), 'Hello World', 'should replace a regex');
+    test.done();
+  },
+  'multi-str-replace': function(test) {
+    test.expect(1);
+    test.equal(grunt.helper('multi-str-replace', 'ASDF QWER', [['ASDF', 'Hello'], [/qwer/i, 'World']]), 'Hello World', 'should replace a set of replacements');
+    test.done();
+  },
+  'string-replace': function(test) {
+    test.expect(1);
+
+    var files = [{
+      dest: 'test/baz.txt',
+      src: 'test/foo.txt'
+    }];
+
+    var replacements = [
+      ['[test:string]','replaced!'],
+      [/\[test a:regex \d{3,}\]/, 'replaced!'],
+      [/\[test b:regex \d{3,}\]/g, 'replaced!'],
+      [/\[test c:regex \d{3,}\]/g, 'replaced!'],
+      [/\[test d:regex \d{3,}\]/ig, 'replaced!'],
+    ];
+
+    grunt.helper('string-replace', files, replacements);
+
+    var actual = grunt.file.read('test/baz.txt'),
+      expected = grunt.file.read('test/bar.txt');
+
+    test.equal(actual, expected, 'should execute replacements and save a new file');
+    test.done();
   }
 };

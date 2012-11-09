@@ -71,6 +71,15 @@ module.exports = function(grunt) {
     });
   });
 
+  grunt.registerHelper('detect-dest-type', function(dest) {
+    dest = path.normalize(dest);
+    if (grunt.util._.endsWith(dest, path.sep)) {
+      return 'directory';
+    } else {
+      return 'file';
+    }
+  });
+
   grunt.registerHelper('normalize-replacements', function(replacements) {
     return replacements.map(function(replacement) {
       return [replacement.pattern, replacement.replacement];
@@ -85,14 +94,5 @@ module.exports = function(grunt) {
     return replacements.reduce(function(content, replacement) {
       return grunt.helper('str-replace', content, replacement[0], replacement[1]);
     }, string);
-  });
-
-  grunt.registerHelper('detect-dest-type', function(dest) {
-    dest = path.normalize(dest);
-    if (grunt.util._.endsWith(dest, path.sep)) {
-      return 'directory';
-    } else {
-      return 'file';
-    }
   });
 };
