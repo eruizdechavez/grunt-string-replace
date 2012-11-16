@@ -1,6 +1,6 @@
 {
   "name": "grunt-string-replace",
-  "description": "Replaces strings on files by using string or regex patters.",
+  "description": "Replaces strings on files by using string or regex patterns.",
   "version": "0.1.0",
   "homepage": "https://github.com/erickrdch/grunt-string-replace",
   "author": {
