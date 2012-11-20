@@ -1,6 +1,6 @@
 # grunt-string-replace [![Build Status](https://secure.travis-ci.org/erickrdch/grunt-string-replace.png?branch=master)](https://travis-ci.org/erickrdch/grunt-string-replace)
 
-Replaces strings on files by using string or regex patterns.
+Replaces strings on files by using string or regex patterns. Attempts to be a [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) adapter task for your grunt project.
 
 ## Getting Started
 Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-string-replace`
@@ -54,6 +54,10 @@ options: {
   }]
 }
 ```
+
+###### Note
+
+If the pattern is a string, only the first occurrence will be replaced, as stated on [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11).
 
 #### Config Example
 
