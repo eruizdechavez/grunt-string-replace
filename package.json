@@ -29,9 +29,11 @@
   "scripts": {
     "test": "grunt --verbose"
   },
-  "devDependencies": {
-    "grunt": "~0.3.17",
+  "dependencies": {
     "grunt-lib-contrib": "~0.3.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17"
   },
   "keywords": [
     "gruntplugin",
