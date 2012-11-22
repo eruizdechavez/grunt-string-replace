@@ -1,2 +1,3 @@
-/node_modules/
-*.sublime*
+/test/baz.txt
+/*.sublime-*
+/node_modules

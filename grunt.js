@@ -6,6 +6,9 @@ module.exports = function(grunt) {
     lint: {
       files: ['grunt.js', 'tasks/**/*.js']
     },
+    clean: {
+      files: ['test/baz.txt']
+    },
     test: {
       files: ['test/**/*.js']
     },
@@ -32,9 +35,12 @@ module.exports = function(grunt) {
     }
   });
 
+  // Load nom tasks.
+  grunt.loadNpmTasks('grunt-contrib-clean');
+
   // Load local tasks.
   grunt.loadTasks('tasks');
 
   // Default task.
-  grunt.registerTask('default', 'lint test');
+  grunt.registerTask('default', 'lint clean test');
 };

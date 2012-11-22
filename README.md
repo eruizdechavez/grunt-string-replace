@@ -88,8 +88,19 @@ If the pattern is a string, only the first occurrence will be replaced, as state
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
-0.1.1 - Fix dependency with grunt-lib-contrib
-0.1.0 - Initial release
+0.1.1-1
+  - Added Clean task (and dev dependency) to remove test generated file before testing
+  - Added Sublime Text project files and test generated file to npm ignore list
+
+0.1.1
+  - Fix dependency with grunt-lib-contrib
+
+0.1.0-1
+  - Fixed a typo on package.json description
+  - Added a note about string pattern behavior
+
+0.1.0
+  - Initial release
 
 ## License
 Copyright (c) 2012 Erick Ruiz de Chavez
