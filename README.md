@@ -88,9 +88,9 @@ If the pattern is a string, only the first occurrence will be replaced, as state
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+0.1.1 - Fix dependency with grunt-lib-contrib
 0.1.0 - Initial release
 
 ## License
 Copyright (c) 2012 Erick Ruiz de Chavez
 Licensed under the MIT license.
-
