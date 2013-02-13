@@ -1,4 +1,4 @@
-# grunt-string-replace [![Build Status](https://secure.travis-ci.org/erickrdch/grunt-string-replace.png?branch=master)](https://travis-ci.org/erickrdch/grunt-string-replace)
+# grunt-string-replace [![Build Status](https://travis-ci.org/erickrdch/grunt-string-replace.png?branch=0.2.0rc1)](https://travis-ci.org/erickrdch/grunt-string-replace)
 
 Replaces strings on files by using string or regex patterns. Attempts to be a [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) adapter task for your grunt project.
 
