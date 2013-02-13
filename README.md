@@ -3,16 +3,15 @@
 Replaces strings on files by using string or regex patterns. Attempts to be a [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) adapter task for your grunt project.
 
 ## Getting Started
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-string-replace`
+To install this grunt plugin on your project simply do: `npm install grunt-string-replace`
 
-Then add this line to your project's `grunt.js` gruntfile:
+Then add this line to your project's `Gruntfile.js`:
 
 ```javascript
 grunt.loadNpmTasks('grunt-string-replace');
 ```
 
 [grunt]: http://gruntjs.com/
-[getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
 
 ## Documentation
 
@@ -85,7 +84,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 0.2.0rc1
-  - Added Support for grunt 0.4.0
+  - Added Support for grunt 0.4.0. This version will not support grunt 0.3.x.
 
 0.1.1-1
   - Added Clean task (and dev dependency) to remove test generated file before testing
