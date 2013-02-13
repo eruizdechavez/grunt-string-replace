@@ -18,17 +18,13 @@ grunt.loadNpmTasks('grunt-string-replace');
 
 ### Configuration
 
-Inside your `grunt.js` file add a section named `string-replace`. This section specifies the files to edit, destinations, patterns and replacements.
+Inside your `Gruntfile.js` file add a section named `string-replace`. This section specifies the files to edit, destinations, patterns and replacements.
 
 #### Parameters
 
 ##### files ```object```
 
-This defines what files this task will edit and should contain key:value pairs.
-
-The key (destination) should be an unique path (supports [grunt.template](https://github.com/gruntjs/grunt/blob/master/docs/api_template.md)) and the value (source) should be a filepath or an array of filepaths (supports [minimatch](https://github.com/isaacs/minimatch)).
-
-When copying to a directory you must add a trailing slash to the destination due to support of single file copy.
+This defines what files this task will edit and must follow [Gruntfile Files mapping](https://github.com/gruntjs/grunt/wiki/Configuring-tasks).
 
 ##### options ```object```
 
@@ -88,6 +84,9 @@ If the pattern is a string, only the first occurrence will be replaced, as state
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+0.2.0rc1
+  - Added Support for grunt 0.4.0
+
 0.1.1-1
   - Added Clean task (and dev dependency) to remove test generated file before testing
   - Added Sublime Text project files and test generated file to npm ignore list

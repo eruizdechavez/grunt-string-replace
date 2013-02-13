@@ -15,31 +15,27 @@
   "bugs": {
     "url": "https://github.com/erickrdch/grunt-string-replace/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/erickrdch/grunt-string-replace/blob/master/LICENSE-MIT"
-    }
-  ],
-  "main": "grunt.js",
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/erickrdch/grunt-string-replace/blob/master/LICENSE-MIT"
+  }],
+  "main": "Gruntfile.js",
   "bin": "bin/grunt-string-replace",
   "engines": {
-    "node": "*"
+    "node": "0.8"
   },
   "scripts": {
     "test": "grunt --verbose"
   },
   "dependencies": {
-    "grunt-lib-contrib": "~0.3.1"
+    "grunt-lib-contrib": "0.4.0"
   },
   "devDependencies": {
-    "grunt": "~0.3.17",
-    "grunt-contrib-clean": "~0.3.1"
+    "grunt": "0.4.0rc7",
+    "grunt-contrib-clean": "0.4.0rc6",
+    "grunt-contrib-jshint": "0.1.1rc6",
+    "grunt-contrib-nodeunit": "0.1.2rc6",
+    "grunt-contrib-watch": "0.2.0rc7"
   },
-  "keywords": [
-    "gruntplugin",
-    "string",
-    "replace",
-    "regex"
-  ]
+  "keywords": ["gruntplugin", "string", "replace", "regex"]
 }
