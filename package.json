@@ -1,7 +1,7 @@
 {
   "name": "grunt-string-replace",
   "description": "Replaces strings on files by using string or regex patterns. Attempts to be a String.prototype.replace adapter task for your grunt project.",
-  "version": "0.1.1-1",
+  "version": "0.2.0rc1",
   "homepage": "https://github.com/erickrdch/grunt-string-replace",
   "author": {
     "name": "Erick Ruiz de Chavez",
@@ -15,10 +15,12 @@
   "bugs": {
     "url": "https://github.com/erickrdch/grunt-string-replace/issues"
   },
-  "licenses": [{
-    "type": "MIT",
-    "url": "https://github.com/erickrdch/grunt-string-replace/blob/master/LICENSE-MIT"
-  }],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/erickrdch/grunt-string-replace/blob/master/LICENSE-MIT"
+    }
+  ],
   "main": "Gruntfile.js",
   "bin": "bin/grunt-string-replace",
   "engines": {
@@ -37,5 +39,10 @@
     "grunt-contrib-nodeunit": "0.1.2rc6",
     "grunt-contrib-watch": "0.2.0rc7"
   },
-  "keywords": ["gruntplugin", "string", "replace", "regex"]
+  "keywords": [
+    "gruntplugin",
+    "string",
+    "replace",
+    "regex"
+  ]
 }
