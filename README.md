@@ -84,7 +84,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 0.2.0rc1
-  - Added Support for grunt 0.4.0. This version will not support grunt 0.3.x.
+  - Added Support for grunt 0.4.0. This version will not support grunt 0.3.x, if you need to use it then ```npm install grunt-string-replace@0.1```
 
 0.1.1-1
   - Added Clean task (and dev dependency) to remove test generated file before testing
