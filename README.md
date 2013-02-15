@@ -1,34 +1,29 @@
-# grunt-string-replace [![Build Status](https://secure.travis-ci.org/erickrdch/grunt-string-replace.png?branch=master)](https://travis-ci.org/erickrdch/grunt-string-replace)
+# grunt-string-replace [![Build Status](https://travis-ci.org/erickrdch/grunt-string-replace.png?branch=0.2.0rc1)](https://travis-ci.org/erickrdch/grunt-string-replace)
 
 Replaces strings on files by using string or regex patterns. Attempts to be a [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) adapter task for your grunt project.
 
 ## Getting Started
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-string-replace`
+To install this grunt plugin on your project simply do: `npm install grunt-string-replace`
 
-Then add this line to your project's `grunt.js` gruntfile:
+Then add this line to your project's `Gruntfile.js`:
 
 ```javascript
 grunt.loadNpmTasks('grunt-string-replace');
 ```
 
 [grunt]: http://gruntjs.com/
-[getting_started]: https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
 
 ## Documentation
 
 ### Configuration
 
-Inside your `grunt.js` file add a section named `string-replace`. This section specifies the files to edit, destinations, patterns and replacements.
+Inside your `Gruntfile.js` file add a section named `string-replace`. This section specifies the files to edit, destinations, patterns and replacements.
 
 #### Parameters
 
 ##### files ```object```
 
-This defines what files this task will edit and should contain key:value pairs.
-
-The key (destination) should be an unique path (supports [grunt.template](https://github.com/gruntjs/grunt/blob/master/docs/api_template.md)) and the value (source) should be a filepath or an array of filepaths (supports [minimatch](https://github.com/isaacs/minimatch)).
-
-When copying to a directory you must add a trailing slash to the destination due to support of single file copy.
+This defines what files this task will edit and must follow [Gruntfile Files mapping](https://github.com/gruntjs/grunt/wiki/Configuring-tasks).
 
 ##### options ```object```
 
@@ -88,6 +83,9 @@ If the pattern is a string, only the first occurrence will be replaced, as state
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+0.2.0rc1
+  - Added Support for grunt 0.4.0. This version will not support grunt 0.3.x, if you need to use it then ```npm install grunt-string-replace@0.1```
+
 0.1.1-1
   - Added Clean task (and dev dependency) to remove test generated file before testing
   - Added Sublime Text project files and test generated file to npm ignore list
