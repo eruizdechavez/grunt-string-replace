@@ -21,7 +21,7 @@
       "url": "https://github.com/erickrdch/grunt-string-replace/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "Gruntfile.js",
+  "main": "tasks/string-replace",
   "bin": "bin/grunt-string-replace",
   "engines": {
     "node": ">= 0.8.0"
