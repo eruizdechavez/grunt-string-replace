@@ -9,6 +9,11 @@
 module.exports = function(grunt) {
   'use strict';
 
+  // if grunt is not provided, then expose internal API
+  if ('object' !== typeof(grunt)) {
+    return require('./lib/string-replace').init(require('grunt'));
+  }
+
   var helpers = require('grunt-lib-contrib').init(grunt);
   var string_replace = require('./lib/string-replace').init(grunt);
 
