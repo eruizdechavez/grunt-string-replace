@@ -83,23 +83,29 @@ If the pattern is a string, only the first occurrence will be replaced, as state
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+0.2.2
+  - Added support to be used as npm module. Contributed by [thanpolas](https://github.com/thanpolas).
+
+0.2.1
+  - Updated dependencies for Grunt 0.4.0.
+
 0.2.0
-  - Added Support for grunt 0.4.0. This version will not support grunt 0.3.x, if you need to use it then ```npm install grunt-string-replace@0.1```
+  - Added Support for grunt 0.4.0. This version will not support grunt 0.3.x, if you need to use it then ```npm install grunt-string-replace@0.1```.
 
 0.1.1-1
-  - Added Clean task (and dev dependency) to remove test generated file before testing
-  - Added Sublime Text project files and test generated file to npm ignore list
+  - Added Clean task (and dev dependency) to remove test generated file before testing.
+  - Added Sublime Text project files and test generated file to npm ignore list.
 
 0.1.1
-  - Fix dependency with grunt-lib-contrib
+  - Fix dependency with grunt-lib-contrib.
 
 0.1.0-1
-  - Fixed a typo on package.json description
-  - Added a note about string pattern behavior
+  - Fixed a typo on package.json description.
+  - Added a note about string pattern behavior.
 
 0.1.0
-  - Initial release
+  - Initial release.
 
 ## License
-Copyright (c) 2012 Erick Ruiz de Chavez
+Copyright (c) 2012 Erick Ruiz de Chavez.
 Licensed under the MIT license.
