@@ -10,7 +10,6 @@ exports.init = function(grunt) {
   'use strict';
 
   var path = require('path');
-  var helpers = require('grunt-lib-contrib').init(grunt);
 
   var detectDestType = function(dest) {
       if (grunt.util._.endsWith(dest, '/')) {
