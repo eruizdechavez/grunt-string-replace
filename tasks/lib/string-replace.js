@@ -10,6 +10,7 @@ exports.init = function(grunt) {
   'use strict';
 
   var path = require('path');
+  var fs = require('fs');
 
   var detectDestType = function(dest) {
       if (grunt.util._.endsWith(dest, '/')) {
