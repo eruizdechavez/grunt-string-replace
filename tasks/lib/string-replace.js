@@ -27,26 +27,45 @@ exports.init = function(grunt) {
       }
     };
 
-  exports.replace = function(files, replacements) {
+  exports.replace = function(files, replacements, replaceCb) {
     var dest;
     var isExpandedPair;
     var content;
 
-    files.forEach(function(filePair) {
-      filePair.src.forEach(function(src) {
-        isExpandedPair = filePair.orig.expand || false;
+    grunt.util.async.forEach(
+      files,
+      function(filePair, filePairCb) {
+        grunt.util.async.forEach(
+          filePair.src,
+          function(src, srcCb) {
+            isExpandedPair = filePair.orig.expand || false;
 
-        if (detectDestType(filePair.dest) === 'directory') {
-          dest = (isExpandedPair) ? filePair.dest : unixifyPath(path.join(filePair.dest, src));
-        } else {
-          dest = filePair.dest;
-        }
+            if (detectDestType(filePair.dest) === 'directory') {
+              dest = (isExpandedPair) ? filePair.dest : unixifyPath(path.join(filePair.dest, src));
+            } else {
+              dest = filePair.dest;
+            }
 
-        content = grunt.file.read(src);
-        content = exports.multi_str_replace(content, replacements);
-        grunt.file.write(dest, content);
-      });
-    });
+            fs.readFile(src, 'utf8', function (err, content) {
+              if (err) {
+                return replaceCb('Error reading file: ' + src + ': ' + err.stack());
+              }
+
+              content = exports.multi_str_replace(content, replacements);
+
+              fs.writeFile(dest, content, function (err) {
+                if (err) {
+                  return replaceCb('Error writing new content to file: ' + dest + ': ' + err.stack());
+                }
+                srcCb();
+              });
+            });
+          },
+          filePairCb
+        );
+      },
+      replaceCb
+    );
   };
 
   exports.normalize_replacements = function(replacements) {
