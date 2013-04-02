@@ -75,6 +75,18 @@ If the pattern is a string, only the first occurrence will be replaced, as state
         replacement: ";"
       }]
     }
+  },
+  inline: {
+    options: {
+      replacements: [
+        // place files inline example
+      	{
+        	pattern: '<script src="js/async.min.js"></script>',
+        	replacement: '<script><%= grunt.file.read("path/to/source/js/async.min.js") %></script>'
+      	}
+      ]
+    },
+    files: {...}
   }
 }
 ```
