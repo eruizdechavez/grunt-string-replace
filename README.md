@@ -95,6 +95,13 @@ If the pattern is a string, only the first occurrence will be replaced, as state
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+0.2.3
+  - Removed dependency with grunt-lib-contrib due to deprecation of "options" method in favor of Grunt's "options" util.
+  - Updated grunt-contrib-jshint version in package.json to 0.3.0
+  - Updated grunt-contrib-watch version in package.json to 0.3.1
+  - Updated grunt version in package.json to 0.4.1
+  - Added Node.js v0.10 to Travis CI config file
+
 0.2.2
   - Added support to be used as npm module. Contributed by [thanpolas](https://github.com/thanpolas).
 
