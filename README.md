@@ -95,6 +95,9 @@ If the pattern is a string, only the first occurrence will be replaced, as state
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+To Be Released
+  - Inline replacing example on README.md. Contributed by [willfarrell](https://github.com/willfarrell)
+  
 0.2.3
   - Removed dependency with grunt-lib-contrib due to deprecation of "options" method in favor of Grunt's "options" util.
   - Updated grunt-contrib-jshint version in package.json to 0.3.0
