@@ -44,7 +44,7 @@ module.exports = function(grunt) {
     'string-replace': {
       test: {
         files: {
-          'tmp/foo.txt': 'test/fixtures/foo.txt',
+          'tmp/foo.txt': 'test/fixtures/foo.txt'
         },
         options: {
           replacements: [{
