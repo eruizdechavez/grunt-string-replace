@@ -38,14 +38,14 @@ This option will hold all your pattern/replacement pairs. A pattern/replacement 
 * pattern ```string``` or ```regex```
 * replacement ```string```
 
-``` javascript
+```javascript
 options: {
   replacements: [{
     pattern: /\/(asdf|qwer)\//ig,
-    replacement: "'$1'"
+    replacement: '"$1"'
   }, {
-    pattern: ",",
-    replacement: ";"
+    pattern: ',',
+    replacement: ';'
   }]
 }
 ```
@@ -56,23 +56,23 @@ If the pattern is a string, only the first occurrence will be replaced, as state
 
 #### Config Example
 
-``` javascript
-"string-replace": {
+```javascript
+'string-replace': {
   dist: {
     files: {
-      "path/to/directory/": "path/to/source/*", // includes files in dir
-      "path/to/directory/": "path/to/source/**", // includes files in dir and subdirs
-      "path/to/project-<%= pkg.version %>/": "path/to/source/**", // variables in destination
-      "path/to/directory/": ["path/to/sources/*.js", "path/to/more/*.js"], // include JS files in two diff dirs
-      "path/to/filename.ext": "path/to/source.ext"
+      'path/to/directory/': 'path/to/source/*', // includes files in dir
+      'path/to/directory/': 'path/to/source/**', // includes files in dir and subdirs
+      'path/to/project-<%= pkg.version %>/': 'path/to/source/**', // variables in destination
+      'path/to/directory/': ['path/to/sources/*.js', 'path/to/more/*.js'], // include JS files in two diff dirs
+      'path/to/filename.ext': 'path/to/source.ext'
     },
     options: {
       replacements: [{
         pattern: /\/(asdf|qwer)\//ig,
-        replacement: "'$1'"
+        replacement: ''$1''
       }, {
-        pattern: ",",
-        replacement: ";"
+        pattern: ',',
+        replacement: ';'
       }]
     }
   },
@@ -80,15 +80,89 @@ If the pattern is a string, only the first occurrence will be replaced, as state
     options: {
       replacements: [
         // place files inline example
-      	{
-        	pattern: '<script src="js/async.min.js"></script>',
-        	replacement: '<script><%= grunt.file.read("path/to/source/js/async.min.js") %></script>'
+        {
+        	pattern: '<script src='js/async.min.js'></script>',
+        	replacement: '<script><%= grunt.file.read('path/to/source/js/async.min.js') %></script>'
       	}
       ]
     },
     files: {...}
   }
 }
+```
+
+## Advanced Usage
+
+Since grunt-string-replace is basically a wrapper of [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) you can also provide a function as a replacement pattern instead of a string or a template. To get more details about how to use a function as replacement pattern I recommend you to read [Specifying a function as a parameter](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String/replace#Specifying_a_function_as_a_parameter). 
+
+### Example
+
+We will be reading file names from HTML comments and use the paths later to fetch the content and insert it inside a resulting HTML. Assuming the following setup:
+
+*dist/index.html*
+
+```html
+<!-- @import partials/header.html -->
+content here
+<!-- @import partials/footer.html -->
+```
+
+*dist/partials/header.html*
+
+```html
+<html><head></head><body>
+```
+
+*dist/partials/footer.html*
+
+```html
+</body></html>
+```
+
+*Gruntfile.js*
+
+```javascript
+'use strict';
+
+module.exports = function (grunt) {
+  // Project configuration.
+  grunt.initConfig({
+    config: {
+      dist: 'dist/'
+    },
+    'string-replace': {
+      kit: {
+        files: {
+          '<%= config.dist %>index-dist.html': '<%= config.dist %>index.html'
+        },
+        options: {
+          replacements: [{
+            pattern: /<!-- @import (.*?) -->/ig,
+            replacement: function (match, p1, offset, string) {
+              return grunt.file.read(grunt.config.get('config.dist') + p1);
+            }
+          }]
+        }
+      }
+    }
+  });
+
+  // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-string-replace');
+
+  // Default task.
+  grunt.registerTask('default', ['string-replace']);
+};
+```
+
+After executing grunt we get the following:
+
+*dist/index-dist.html*
+
+```html
+<html><head></head><body>
+content here
+</body></html>
 ```
 
 ## Contributing
@@ -100,7 +174,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
   - Inline replacing example on README.md. Contributed by [willfarrell](https://github.com/willfarrell)
 
 0.2.3
-  - Removed dependency with grunt-lib-contrib due to deprecation of "options" method in favor of Grunt's "options" util.
+  - Removed dependency with grunt-lib-contrib due to deprecation of 'options' method in favor of Grunt's 'options' util.
   - Updated grunt-contrib-jshint version in package.json to 0.3.0
   - Updated grunt-contrib-watch version in package.json to 0.3.1
   - Updated grunt version in package.json to 0.4.1
