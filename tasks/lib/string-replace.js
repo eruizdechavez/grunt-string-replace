@@ -32,8 +32,17 @@ exports.init = function (grunt) {
     var isExpandedPair;
     var content;
 
-    grunt.util.async.forEach(files, function (filePair, callback) {
-      grunt.util.async.forEach(filePair.src, function (src, callback) {
+    files.forEach(function (filePair) {
+      // filter out things that aren't files
+      // warn when the things that aren't files don't even exist
+      filePair.src.filter(function(src){
+        if( !grunt.file.exists(src) ){
+          grunt.log.warn('Source file "'+ src +'" not found.');
+          return false;
+        } else {
+          return grunt.file.isFile(src);
+        }
+      }).forEach(function (src) {
 
         isExpandedPair = filePair.orig.expand || false;
 
@@ -47,12 +56,8 @@ exports.init = function (grunt) {
         content = exports.multi_str_replace(content, replacements);
         grunt.file.write(dest, content);
 
-        callback();
-
-      }, function (err) {
-        callback(err);
       });
-    }, callback);
+    });
   };
 
   exports.normalize_replacements = function (replacements) {
