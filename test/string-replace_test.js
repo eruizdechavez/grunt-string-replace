@@ -47,13 +47,37 @@ exports['string-replace'] = {
     test.done();
   },
 
-  'replace': function(test) {
+  'replace single file': function(test) {
     test.expect(1);
 
-    var expected = grunt.file.read('test/fixtures/bar.txt');
-    var actual = grunt.file.read('tmp/foo.txt');
+    var expected = grunt.file.read('test/fixtures/bar.txt'),
+      actual = grunt.file.read('tmp/foo.txt');
 
     test.equal(actual, expected, 'should execute replacements and save a new file');
+    test.done();
+  },
+
+  'replace multi, same path': function(test) {
+    test.expect(2);
+
+    var expected = grunt.file.read('test/fixtures/bar.txt'),
+      actual1 = grunt.file.read('tmp/foo/1.txt'),
+      actual2 = grunt.file.read('tmp/foo/2.txt');
+
+    test.equal(actual1, expected, 'should execute replacements and replace src (1)');
+    test.equal(actual2, expected, 'should execute replacements and replace src (2)');
+    test.done();
+  },
+
+  'replace multi, diff path': function(test) {
+    test.expect(2);
+
+    var expected = grunt.file.read('test/fixtures/bar.txt'),
+      actual1 = grunt.file.read('tmp_baz/tmp/bar/1.txt'),
+      actual2 = grunt.file.read('tmp_baz/tmp/bar/2.txt');
+
+    test.equal(actual1, expected, 'should execute replacements and save the file the new path (follows dest as base path and src as file path/name');
+    test.equal(actual2, expected, 'should execute replacements and save the file the new path (follows dest as base path and src as file path/name');
     test.done();
   }
 };

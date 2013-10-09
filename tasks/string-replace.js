@@ -17,13 +17,14 @@ module.exports = function(grunt) {
   var string_replace = require('./lib/string-replace').init(grunt);
 
   grunt.registerMultiTask('string-replace', 'String Replace Task.', function() {
-    var replacements;
-
-    var options = this.options({
-      replacements: []
-    });
+    var done = this.async(),
+      options = this.options({
+        replacements: []
+      }),
+      replacements;
 
     replacements = string_replace.normalize_replacements(options.replacements);
-    string_replace.replace(this.files, replacements);
+
+    string_replace.replace(this.files, replacements, done);
   });
 };

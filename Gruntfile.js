@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      files: ['tmp/']
+      files: ['tmp/', 'tmp_baz/']
     },
 
     nodeunit: {
@@ -41,10 +41,74 @@ module.exports = function(grunt) {
       tasks: ['jshint', 'test']
     },
 
+    copy: {
+      fixtures: {
+        files: [{
+          dest: 'tmp/foo/1.txt',
+          src: 'test/fixtures/foo.txt'
+        }, {
+          dest: 'tmp/foo/2.txt',
+          src: 'test/fixtures/foo.txt'
+        }, {
+          dest: 'tmp/bar/1.txt',
+          src: 'test/fixtures/foo.txt'
+        }, {
+          dest: 'tmp/bar/2.txt',
+          src: 'test/fixtures/foo.txt'
+        }]
+      }
+    },
+
     'string-replace': {
-      test: {
+      single_file: {
         files: {
           'tmp/foo.txt': 'test/fixtures/foo.txt'
+        },
+        options: {
+          replacements: [{
+            pattern: '[test:string]',
+            replacement: 'replaced!'
+          }, {
+            pattern: /\[test a:regex \d{3,}\]/,
+            replacement: 'replaced!'
+          }, {
+            pattern: /\[test b:regex \d{3,}\]/g,
+            replacement: 'replaced!'
+          }, {
+            pattern: /\[test c:regex \d{3,}\]/g,
+            replacement: 'replaced!'
+          }, {
+            pattern: /\[test d:regex \d{3,}\]/ig,
+            replacement: 'replaced!'
+          }]
+        }
+      },
+      mutli_same_path: {
+        files: {
+          'tmp/foo/': 'tmp/foo/*.txt'
+        },
+        options: {
+          replacements: [{
+            pattern: '[test:string]',
+            replacement: 'replaced!'
+          }, {
+            pattern: /\[test a:regex \d{3,}\]/,
+            replacement: 'replaced!'
+          }, {
+            pattern: /\[test b:regex \d{3,}\]/g,
+            replacement: 'replaced!'
+          }, {
+            pattern: /\[test c:regex \d{3,}\]/g,
+            replacement: 'replaced!'
+          }, {
+            pattern: /\[test d:regex \d{3,}\]/ig,
+            replacement: 'replaced!'
+          }]
+        }
+      },
+      mutli_diff_path: {
+        files: {
+          'tmp_baz/': 'tmp/bar/*.txt'
         },
         options: {
           replacements: [{
@@ -73,10 +137,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Load local tasks.
   grunt.loadTasks('tasks');
 
-  grunt.registerTask('test', ['clean', 'string-replace', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'copy', 'string-replace', 'nodeunit']);
   grunt.registerTask('default', ['jshint', 'test']);
 };
