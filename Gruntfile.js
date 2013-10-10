@@ -2,7 +2,7 @@
  * grunt-string-replace
  * https://github.com/erickrdch/grunt-string-replace
  *
- * Copyright (c) 2012 Erick Ruiz de Chavez
+ * Copyright (c) 2013 Erick Ruiz de Chavez
  * Licensed under the MIT license.
  */
 
@@ -22,15 +22,12 @@ module.exports = function(grunt) {
         undef: true,
         boss: true,
         eqnull: true,
-        node: true,
-        es5: true
+        node: true
       },
-      lint: ['Gruntfile.js', 'tasks/**/*.js']
+      lint: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
     },
 
-    clean: {
-      files: ['tmp/', 'tmp_baz/']
-    },
+    clean: ['tmp/', 'tmp_baz/'],
 
     nodeunit: {
       files: ['test/**/*.js']

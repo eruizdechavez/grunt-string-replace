@@ -93,7 +93,7 @@ If the pattern is a string, only the first occurrence will be replaced, as state
 
 ## Advanced Usage
 
-Since grunt-string-replace is basically a wrapper of [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) you can also provide a function as a replacement pattern instead of a string or a template. To get more details about how to use a function as replacement pattern I recommend you to read [Specifying a function as a parameter](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String/replace#Specifying_a_function_as_a_parameter). 
+Since grunt-string-replace is basically a wrapper of [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) you can also provide a function as a replacement pattern instead of a string or a template. To get more details about how to use a function as replacement pattern I recommend you to read [Specifying a function as a parameter](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String/replace#Specifying_a_function_as_a_parameter).
 
 ### Example
 
@@ -169,6 +169,12 @@ content here
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+0.2.5
+  - Fix for #16
+  - Fix for Travis CI config file
+  - Added error handling to finish the task if something did not work as expected instead of just fail silently
+  - Updated dev dependencies to latest stable versions
+
 0.2.4
   - Asynchronously loop files. Original idea contributed by [maxnachlinger](https://github.com/maxnachlinger)
   - Inline replacing example on README.md. Contributed by [willfarrell](https://github.com/willfarrell)
