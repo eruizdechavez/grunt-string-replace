@@ -3,15 +3,21 @@
 Replaces strings on files by using string or regex patterns. Attempts to be a [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) adapter task for your grunt project.
 
 ## Getting Started
-To install this grunt plugin on your project simply do: `npm install grunt-string-replace`
+This plugin requires Grunt `~0.4.0`
 
-Then add this line to your project's `Gruntfile.js`:
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
-```javascript
+```shell
+npm install grunt-string-replace --save-dev
+```
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
 grunt.loadNpmTasks('grunt-string-replace');
 ```
 
-[grunt]: http://gruntjs.com/
+*This plugin was designed to work with Grunt 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.1.1-1](https://github.com/erickrdch/grunt-string-replace/tree/0.1.1-1).*
 
 ## Documentation
 
@@ -23,7 +29,7 @@ Inside your `Gruntfile.js` file add a section named `string-replace`. This secti
 
 ##### files ```object```
 
-This defines what files this task will edit and must follow [Gruntfile Files mapping](https://github.com/gruntjs/grunt/wiki/Configuring-tasks).
+This defines what files this task will edit and must follow [Gruntfile Files mapping](http://gruntjs.com/configuring-tasks#files).
 
 ##### options ```object```
 
@@ -169,6 +175,11 @@ content here
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+
+0.2.6
+  - Update Getting Started section
+  - Fix broken link to Gruntfile's File section (#18)
+
 0.2.5
   - Fix for #16
   - Fix for Travis CI config file
@@ -212,3 +223,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## License
 Copyright (c) 2012 Erick Ruiz de Chavez.
 Licensed under the MIT license.
+
+[grunt]: http://gruntjs.com/
