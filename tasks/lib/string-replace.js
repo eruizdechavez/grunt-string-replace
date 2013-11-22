@@ -5,14 +5,16 @@
  * Copyright (c) 2012 Erick Ruiz de Chavez
  * Licensed under the MIT license.
  */
-var util = require('util');
+var util = require('util'),
+  async = require('async');
+
 exports.init = function(grunt) {
   'use strict';
 
   var path = require('path');
 
   var detectDestType = function(dest) {
-    if (grunt.util._.endsWith(dest, '/')) {
+    if (dest[dest.length - 1] === '/') {
       return 'directory';
     } else {
       return 'file';
@@ -34,8 +36,8 @@ exports.init = function(grunt) {
   exports.replace = function(files, replacements, replace_done) {
     var content, dest;
 
-    grunt.util.async.forEach(files, function(file, files_done) {
-      grunt.util.async.forEach(file.src, function(src, src_done) {
+    async.forEach(files, function(file, files_done) {
+      async.forEach(file.src, function(src, src_done) {
         if (!grunt.file.exists(src)) {
           return src_done(src + ' file not found');
         }

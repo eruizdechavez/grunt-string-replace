@@ -44,5 +44,8 @@
     "string",
     "replace",
     "regex"
-  ]
+  ],
+  "dependencies": {
+    "async": "~0.2.9"
+  }
 }

@@ -20,15 +20,14 @@ exports['string-replace'] = {
   'normalize_replacements': function(test) {
     test.expect(2);
 
-    var _ = grunt.util._,
-      replacements = [];
+    var replacements = [], i = 0;
 
-    _(10).times(function() {
+    for (; i < 10; i++) {
       replacements.push(new Replacement());
-    });
+    }
 
     var normalized = string_replace.normalize_replacements(replacements);
-    test.equal(_.isArray(normalized), true, 'normalized should be an array');
+    test.equal(Array.isArray(normalized), true, 'normalized should be an array');
 
     var total = normalized.reduce(function(subtotal, item) {
       return subtotal + item.length;
