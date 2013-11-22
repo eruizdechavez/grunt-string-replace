@@ -176,6 +176,11 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+0.2.7
+  - External libraries are deprecated on Grunt 0.4.2
+    - Remove grunt.util._ as it is not really required
+    - Replace grunt.util.async with async
+
 0.2.6
   - Update Getting Started section
   - Fix broken link to Gruntfile's File section (#18)
