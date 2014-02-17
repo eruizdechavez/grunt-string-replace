@@ -6,7 +6,8 @@
  * Licensed under the MIT license.
  */
 var util = require('util'),
-  async = require('async');
+  async = require('async'),
+  chalk = require('chalk');
 
 exports.init = function(grunt) {
   'use strict';
@@ -61,6 +62,7 @@ exports.init = function(grunt) {
         content = grunt.file.read(src);
         content = exports.multi_str_replace(content, replacements);
         grunt.file.write(dest, content);
+        grunt.log.writeln('File ' + chalk.cyan(dest) + ' created.');
 
         return src_done();
       }, files_done);
