@@ -176,6 +176,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+0.2.8
+  - Added log message after file is succesfully created. Contributed by [donaldpipowitch](https://github.com/donaldpipowitch)
+
 0.2.7
   - External libraries are deprecated on Grunt 0.4.2
     - Remove grunt.util._ as it is not really required
