@@ -13,31 +13,27 @@ npm install grunt-string-replace --save-dev
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
-```js
+```javascript
 grunt.loadNpmTasks('grunt-string-replace');
 ```
 
-*This plugin was designed to work with Grunt 0.4.x. If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.1.1-1](https://github.com/erickrdch/grunt-string-replace/tree/0.1.1-1).*
+*If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.1.1-1](https://github.com/erickrdch/grunt-string-replace/tree/0.1.1-1).*
 
-## Documentation
-
-### Configuration
+## Configuration
 
 Inside your `Gruntfile.js` file add a section named `string-replace`. This section specifies the files to edit, destinations, patterns and replacements.
 
-#### Parameters
+### Parameters
 
-##### files ```object```
+#### files ```object```
 
-This defines what files this task will edit and must follow [Gruntfile Files mapping](http://gruntjs.com/configuring-tasks#files).
+Defines what files this task will edit. Grunt itself has very powerful [abstractions](http://gruntjs.com/configuring-tasks#files), so it is **highly recommended** you understand the different ways to specify them. Learn more at [Gruntfile Files mapping](http://gruntjs.com/configuring-tasks#files), some options incude compact format, files object format and files array format.
 
-##### options ```object```
+#### options ```object```
 
-This controls how this task operates and should contain key:value pairs, see options below.
+Controls how this task operates and should contain key:value pairs, see options below.
 
-#### Options
-
-##### replacements ```array```
+##### options.replacements ```array```
 
 This option will hold all your pattern/replacement pairs. A pattern/replacement pair should contain key:value pairs containing:
 
@@ -56,21 +52,22 @@ options: {
 }
 ```
 
-###### Note
+### Notes
 
-If the pattern is a string, only the first occurrence will be replaced, as stated on [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11).
+- If the pattern is a string, only the first occurrence will be replaced, as stated on [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11).
+- When using Grunt templates, be aware that some security checks are implemented by LoDash and may alter your content (mainly to avoid XSS). To avoid this, see the advanced example below.
 
-#### Config Example
+
+## Examples
+
+### Multiple files and multiple replacements
 
 ```javascript
 'string-replace': {
   dist: {
     files: {
-      'path/to/directory/': 'path/to/source/*', // includes files in dir
-      'path/to/directory/': 'path/to/source/**', // includes files in dir and subdirs
-      'path/to/project-<%= pkg.version %>/': 'path/to/source/**', // variables in destination
-      'path/to/directory/': ['path/to/sources/*.js', 'path/to/more/*.js'], // include JS files in two diff dirs
-      'path/to/filename.ext': 'path/to/source.ext'
+      'dest/': 'src/**',
+      'prod/': ['src/*.js', 'src/*.css'],
     },
     options: {
       replacements: [{
@@ -81,31 +78,60 @@ If the pattern is a string, only the first occurrence will be replaced, as state
         replacement: ';'
       }]
     }
-  },
+  }
+```
+
+### Simple inline content
+
+```javascript
+'string-replace': {
   inline: {
+    files: {
+      'dest/': 'src/**',
+    },
     options: {
       replacements: [
         // place files inline example
         {
-        	pattern: '<script src='js/async.min.js'></script>',
-        	replacement: '<script><%= grunt.file.read('path/to/source/js/async.min.js') %></script>'
-      	}
+          pattern: '<script src='js/async.min.js'></script>',
+          replacement: '<script><%= grunt.file.read('path/to/source/js/async.min.js') %></script>'
+        }
       ]
-    },
-    files: {...}
+    }
   }
 }
 ```
 
-## Advanced Usage
+### Using files' expand options
+
+For more details, see Grunt's documentation about [dynamic files object](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically).
+
+```javascript
+'string-replace': {
+  dist: {
+    files: [{
+      expand: true,
+      cwd: 'src/',
+      src: '**/*',
+      dest: 'dist/'
+    }],
+    options: {
+      replacements: [{
+        pattern: 'hello',
+        replacement: 'howdy'
+      }]
+    }
+  }
+}
+```
+
+### Advanced inline
 
 Since grunt-string-replace is basically a wrapper of [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) you can also provide a function as a replacement pattern instead of a string or a template. To get more details about how to use a function as replacement pattern I recommend you to read [Specifying a function as a parameter](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String/replace#Specifying_a_function_as_a_parameter).
 
-### Example
-
 We will be reading file names from HTML comments and use the paths later to fetch the content and insert it inside a resulting HTML. Assuming the following setup:
 
-*dist/index.html*
+*src/index.html*
 
 ```html
 <!-- @import partials/header.html -->
@@ -113,13 +139,13 @@ content here
 <!-- @import partials/footer.html -->
 ```
 
-*dist/partials/header.html*
+*src/partials/header.html*
 
 ```html
 <html><head></head><body>
 ```
 
-*dist/partials/footer.html*
+*src/partials/footer.html*
 
 ```html
 </body></html>
@@ -134,17 +160,18 @@ module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
     config: {
+      src: 'src/*.html'
       dist: 'dist/'
     },
     'string-replace': {
-      kit: {
+      dist: {
         files: {
-          '<%= config.dist %>index-dist.html': '<%= config.dist %>index.html'
+          '<%= config.dist %>': '<%= config.src %>'
         },
         options: {
           replacements: [{
             pattern: /<!-- @import (.*?) -->/ig,
-            replacement: function (match, p1, offset, string) {
+            replacement: function (match, p1) {
               return grunt.file.read(grunt.config.get('config.dist') + p1);
             }
           }]
@@ -163,7 +190,7 @@ module.exports = function (grunt) {
 
 After executing grunt we get the following:
 
-*dist/index-dist.html*
+*dist/index.html*
 
 ```html
 <html><head></head><body>
@@ -172,12 +199,19 @@ content here
 ```
 
 ## Contributing
+
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
 
+1.0.0
+  - Update dependencies
+  - Update README.md
+  - Well deserved bump to 1.0.0 (its been stable for long enough now)
+
 0.2.8
   - Added log message after file is succesfully created. Contributed by [donaldpipowitch](https://github.com/donaldpipowitch)
+  - Do not report error if one of the replacements resolves to a folder
 
 0.2.7
   - External libraries are deprecated on Grunt 0.4.2
