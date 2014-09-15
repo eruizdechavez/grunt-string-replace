@@ -24,7 +24,8 @@
   "main": "tasks/string-replace",
   "bin": "bin/grunt-string-replace",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.8.0",
+    "npm": ">= 1.4.15"
   },
   "scripts": {
     "test": "grunt --verbose"
