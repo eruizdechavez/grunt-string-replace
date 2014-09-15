@@ -2,7 +2,7 @@
  * grunt-string-replace
  * https://github.com/erickrdch/grunt-string-replace
  *
- * Copyright (c) 2012 Erick Ruiz de Chavez
+ * Copyright (c) 2014 Erick Ruiz de Chavez
  * Licensed under the MIT license.
  */
 
