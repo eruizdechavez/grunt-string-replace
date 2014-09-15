@@ -5,8 +5,8 @@
   "homepage": "https://github.com/erickrdch/grunt-string-replace",
   "author": {
     "name": "Erick Ruiz de Chavez",
-    "email": "erickrdch@gmail.com",
-    "url": "http://erickrdch.com"
+    "email": "erick@erch.co",
+    "url": "http://erickruizdechavez.com"
   },
   "repository": {
     "type": "git",
@@ -24,20 +24,21 @@
   "main": "tasks/string-replace",
   "bin": "bin/grunt-string-replace",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.8.0",
+    "npm": ">= 1.4.15"
   },
   "scripts": {
     "test": "grunt --verbose"
   },
   "peerDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": "^0.4.0"
   },
   "devDependencies": {
-    "grunt-contrib-clean": "0.5.0",
-    "grunt-contrib-jshint": "0.6.4",
-    "grunt-contrib-nodeunit": "0.2.1",
-    "grunt-contrib-watch": "0.5.3",
-    "grunt-contrib-copy": "0.4.1"
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.4.1",
+    "grunt-contrib-watch": "^0.6.1"
   },
   "keywords": [
     "gruntplugin",
@@ -46,7 +47,7 @@
     "regex"
   ],
   "dependencies": {
-    "async": "~0.2.9",
-    "chalk": "~0.4.0"
+    "async": "^0.9.0",
+    "chalk": "^0.5.1"
   }
 }
