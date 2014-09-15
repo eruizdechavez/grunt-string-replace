@@ -44,7 +44,7 @@ exports.init = function(grunt) {
         }
 
         if (grunt.file.isDir(src)) {
-          return src_done('source cannot be a directory');
+          return src_done();
         }
 
         if (detectDestType(file.dest) === 'directory') {
