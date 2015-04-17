@@ -79,6 +79,7 @@ options: {
       }]
     }
   }
+}
 ```
 
 ### Simple inline content
