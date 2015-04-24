@@ -204,6 +204,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+1.1.1
+  - Add Node.js v0.12 to Travis CI
+
 1.1.0
   - Update dependencies
   - Add new log and debug messages
