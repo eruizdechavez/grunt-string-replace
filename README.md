@@ -204,6 +204,11 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+1.1.0
+  - Update dependencies
+  - Add new log and debug messages
+  - Improved file handling; grunt-string-replace will not copy files that are not modified (no replacements executed). Contributed by [iabw](https://github.com/iabw)
+
 1.0.0
   - Update dependencies
   - Update README.md

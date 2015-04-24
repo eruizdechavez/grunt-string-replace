@@ -24,30 +24,34 @@ exports.init = function(grunt) {
 
   var unixifyPath = function(filepath) {
     var path = '';
-    grunt.log.debug('unixifying ', filepath);
     if (process.platform === 'win32') {
       path = filepath.replace(/\\/g, '/');
     } else {
       path = filepath;
     }
-    grunt.log.debug('unixified path is ', path);
     return path;
   };
 
   exports.replace = function(files, replacements, replace_done) {
-    var content, dest;
+    var content, newContent, dest;
 
     async.forEach(files, function(file, files_done) {
       async.forEach(file.src, function(src, src_done) {
+        grunt.log.debug('working on file', src);
+
         if (!grunt.file.exists(src)) {
+          grunt.log.debug('file not fount', src);
           return src_done(src + ' file not found');
         }
 
         if (grunt.file.isDir(src)) {
+          grunt.log.debug('source file is a directory', src);
           return src_done();
         }
 
         if (detectDestType(file.dest) === 'directory') {
+          grunt.log.debug('destination is a directory');
+
           if (grunt.file.doesPathContain(file.dest, src)) {
             dest = path.join(file.dest, src.replace(file.dest, ''));
           } else {
@@ -58,13 +62,19 @@ exports.init = function(grunt) {
         }
 
         dest = unixifyPath(dest);
-
+        grunt.log.debug('unixified path is', dest);
         content = grunt.file.read(src);
-        content = exports.multi_str_replace(content, replacements);
-        grunt.file.write(dest, content);
-        grunt.log.writeln('File ' + chalk.cyan(dest) + ' created.');
+        newContent = exports.multi_str_replace(content, replacements);
+
+        if (content !== newContent){
+          grunt.file.write(dest, newContent);
+          grunt.log.writeln('File ' + chalk.cyan(dest) + ' created.');
+        } else {
+          grunt.log.writeln('File ' + chalk.cyan(dest) + ' ' + chalk.red('not') + ' created; No replacements found.');
+        }
 
         return src_done();
+
       }, files_done);
     }, function(err) {
       if (err) {
