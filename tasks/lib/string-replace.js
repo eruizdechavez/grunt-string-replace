@@ -32,8 +32,19 @@ exports.init = function(grunt) {
     return path;
   };
 
-  exports.replace = function(files, replacements, replace_done) {
+  exports.replace = function(files, replacements, options, replace_done) {
     var content, newContent, dest;
+
+    if (!replace_done) {
+      replace_done = options;
+      options = {};
+    }
+
+    if (!options.hasOwnProperty("saveUnchanged")) {
+      options.saveUnchanged = true;
+    } else {
+      options.saveUnchanged = !!options.saveUnchanged;
+    }
 
     async.forEach(files, function(file, files_done) {
       async.forEach(file.src, function(src, src_done) {
@@ -66,7 +77,7 @@ exports.init = function(grunt) {
         content = grunt.file.read(src);
         newContent = exports.multi_str_replace(content, replacements);
 
-        if (content !== newContent){
+        if (content !== newContent || options.saveUnchanged) {
           grunt.file.write(dest, newContent);
           grunt.log.writeln('File ' + chalk.cyan(dest) + ' created.');
         } else {

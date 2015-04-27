@@ -25,6 +25,6 @@ module.exports = function(grunt) {
 
     replacements = string_replace.normalize_replacements(options.replacements);
 
-    string_replace.replace(this.files, replacements, done);
+    string_replace.replace(this.files, replacements, options, done);
   });
 };

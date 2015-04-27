@@ -33,6 +33,12 @@ Defines what files this task will edit. Grunt itself has very powerful [abstract
 
 Controls how this task operates and should contain key:value pairs, see options below.
 
+##### options.saveUnchanged ```boolean```
+
+By default `true` this flag will instruct `grunt-string-replace` to copy the files on `options.replacements` patters even if there are no replacing matches.
+
+By setting this flag to `false` files that have not changed (no replacements done) will not be saved on the new location. This will speed up the task if there is a large number of files.
+
 ##### options.replacements ```array```
 
 This option will hold all your pattern/replacement pairs. A pattern/replacement pair should contain key:value pairs containing:
@@ -204,6 +210,10 @@ content here
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+
+1.2.0
+  - Add `saveUnchanged` option to control weather unmodified files are saved or not.
+  - Add iojs to Travis CI.
 
 1.1.1
   - Add Node.js v0.12 to Travis CI
