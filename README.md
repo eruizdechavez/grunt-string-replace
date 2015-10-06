@@ -73,7 +73,7 @@ options: {
   dist: {
     files: {
       'dest/': 'src/**',
-      'prod/': ['src/*.js', 'src/*.css'],
+      'prod/': ['src/*.js', 'src/*.css']
     },
     options: {
       replacements: [{
