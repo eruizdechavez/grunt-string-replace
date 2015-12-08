@@ -1,4 +1,4 @@
-# grunt-string-replace [![Build Status](https://travis-ci.org/erickrdch/grunt-string-replace.svg)](https://travis-ci.org/erickrdch/grunt-string-replace)  [![Node Dependencies](https://david-dm.org/erickrdch/grunt-string-replace.svg)](https://david-dm.org/erickrdch/grunt-string-replace)
+# grunt-string-replace [![Build Status](https://travis-ci.org/eruizdechavez/grunt-string-replace.svg)](https://travis-ci.org/eruizdechavez/grunt-string-replace)  [![Node Dependencies](https://david-dm.org/eruizdechavez/grunt-string-replace.svg)](https://david-dm.org/eruizdechavez/grunt-string-replace)
 
 Replaces strings on files by using string or regex patterns. Attempts to be a [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) adapter task for your grunt project.
 
@@ -17,7 +17,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-string-replace');
 ```
 
-*If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.1.1-1](https://github.com/erickrdch/grunt-string-replace/tree/0.1.1-1).*
+*If you're still using grunt v0.3.x it's strongly recommended that [you upgrade](http://gruntjs.com/upgrading-from-0.3-to-0.4), but in case you can't please use [v0.1.1-1](https://github.com/eruizdechavez/grunt-string-replace/tree/0.1.1-1).*
 
 ## Configuration
 
@@ -211,6 +211,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+1.2.1
+  - Update project URLs
+  - Update dependencies
+
 1.2.0
   - Add `saveUnchanged` option to control weather unmodified files are saved or not.
   - Add iojs to Travis CI.
@@ -282,7 +286,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
   - Initial release.
 
 ## License
-Copyright (c) 2012 Erick Ruiz de Chavez.
+Copyright (c) 2015 Erick Ruiz de Chavez.
 Licensed under the MIT license.
 
 [grunt]: http://gruntjs.com/

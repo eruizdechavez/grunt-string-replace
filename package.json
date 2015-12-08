@@ -2,7 +2,7 @@
   "name": "grunt-string-replace",
   "description": "Replaces strings on files by using string or regex patterns. Attempts to be a String.prototype.replace adapter task for your grunt project.",
   "version": "1.2.0",
-  "homepage": "https://github.com/erickrdch/grunt-string-replace",
+  "homepage": "https://github.com/eruizdechavez/grunt-string-replace",
   "author": {
     "name": "Erick Ruiz de Chavez",
     "email": "erick@erch.co",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/erickrdch/grunt-string-replace.git"
+    "url": "git://github.com/eruizdechavez/grunt-string-replace.git"
   },
   "bugs": {
-    "url": "https://github.com/erickrdch/grunt-string-replace/issues"
+    "url": "https://github.com/eruizdechavez/grunt-string-replace/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/erickrdch/grunt-string-replace/blob/master/LICENSE-MIT"
+      "url": "https://github.com/eruizdechavez/grunt-string-replace/blob/master/LICENSE-MIT"
     }
   ],
   "main": "tasks/string-replace",
@@ -28,13 +28,13 @@
     "npm": ">= 1.4.15"
   },
   "scripts": {
-    "test": "grunt --verbose"
-  },
-  "peerDependencies": {
-    "grunt": "^0.4.0"
+    "test": "grunt --verbose",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
-    "grunt-contrib-clean": "^0.6.0",
+    "grunt": "^0.4.0",
+    "grunt-contrib-clean": "^0.7.0",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-jshint": "^0.11.2",
     "grunt-contrib-nodeunit": "^0.4.1",
@@ -47,7 +47,7 @@
     "regex"
   ],
   "dependencies": {
-    "async": "^0.9.0",
+    "async": "^1.5.0",
     "chalk": "^1.0.0"
   }
 }
