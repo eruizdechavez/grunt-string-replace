@@ -35,7 +35,7 @@ Controls how this task operates and should contain key:value pairs, see options 
 
 ##### options.saveUnchanged ```boolean```
 
-By default `true` this flag will instruct `grunt-string-replace` to copy the files on `options.replacements` patters even if there are no replacing matches.
+By default `true` this flag will instruct `grunt-string-replace` to copy the files on `options.replacements` patterns even if there are no replacing matches.
 
 By setting this flag to `false` files that have not changed (no replacements done) will not be saved on the new location. This will speed up the task if there is a large number of files.
 
