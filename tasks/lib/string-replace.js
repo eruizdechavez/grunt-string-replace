@@ -75,7 +75,7 @@ exports.init = function(grunt) {
         dest = unixifyPath(dest);
         grunt.log.debug('unixified path is', dest);
         content = grunt.file.read(src);
-        newContent = exports.multi_str_replace(content, replacements);
+        newContent = exports.multi_str_replace(content, replacements, src, dest);
 
         if (content !== newContent || options.saveUnchanged) {
           grunt.file.write(dest, newContent);
@@ -102,9 +102,28 @@ exports.init = function(grunt) {
     });
   };
 
-  exports.multi_str_replace = function(string, replacements) {
-    return replacements.reduce(function(content, replacement) {
-      return content.replace(replacement[0], replacement[1]);
+  var decorate_replace_function = function(replacement, src, dest) {
+    grunt.log.debug('decorating replace function with extra arguments');
+
+    return function () {
+      grunt.log.debug('running decorated replace function with extra arguments');
+      var args = Array.prototype.slice.apply(arguments);
+      args.push(src, dest);
+      return replacement.apply(null, args);
+    };
+  };
+
+  exports.multi_str_replace = function(string, replacements, src, dest) {
+    return replacements.reduce(function(content, replacements) {
+      var pattern = replacements[0];
+      var replacement = replacements[1];
+
+      if (typeof replacement === 'function') {
+        grunt.log.debug('replacing function with augmented one');
+        replacement = decorate_replace_function(replacement, src, dest);
+      }
+
+      return content.replace(pattern, replacement);
     }, string);
   };
 
