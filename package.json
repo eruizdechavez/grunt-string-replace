@@ -5,7 +5,7 @@
   "homepage": "https://github.com/eruizdechavez/grunt-string-replace",
   "author": {
     "name": "Erick Ruiz de Chavez",
-    "email": "erick@erch.co",
+    "email": "eruizdechavez@fastmail.com",
     "url": "http://erickruizdechavez.com"
   },
   "repository": {
@@ -24,7 +24,7 @@
   "main": "tasks/string-replace",
   "bin": "bin/grunt-string-replace",
   "engines": {
-    "node": ">= 0.8.0",
+    "node": ">= 0.10.0",
     "npm": ">= 1.4.15"
   },
   "scripts": {

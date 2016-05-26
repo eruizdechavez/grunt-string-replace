@@ -3,7 +3,7 @@
 Replaces strings on files by using string or regex patterns. Attempts to be a [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) adapter task for your grunt project.
 
 ## Getting Started
-This plugin requires node `>= 0.8.0`, Grunt `>= 0.4.0` and npm `>= 1.4.15` (latest stable is recommended).
+This plugin requires node `>= 0.10.0`, Grunt `>= 0.4.0` and npm `>= 1.4.15` (latest stable is recommended).
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -286,7 +286,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
   - Initial release.
 
 ## License
-Copyright (c) 2015 Erick Ruiz de Chavez.
+Copyright (c) 2016 Erick Ruiz de Chavez.
 Licensed under the MIT license.
 
 [grunt]: http://gruntjs.com/
