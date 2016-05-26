@@ -86,6 +86,7 @@ module.exports = function(grunt) {
           'tmp/foo/': 'tmp/foo/*.txt'
         },
         options: {
+          debug_mode: true,
           replacements: [{
             pattern: '[test:string]',
             replacement: 'replaced!'

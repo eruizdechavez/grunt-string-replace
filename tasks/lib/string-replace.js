@@ -48,10 +48,13 @@ exports.init = function(grunt) {
 
     async.forEach(files, function(file, files_done) {
       async.forEach(file.src, function(src, src_done) {
-        grunt.log.debug('working on file', src);
+        if ( options.debug_mode ) {
+          grunt.log.debug('working on file', src);  
+        }
+        
 
         if (!grunt.file.exists(src)) {
-          grunt.log.debug('file not fount', src);
+          grunt.log.debug('file not found', src);
           return src_done(src + ' file not found');
         }
 
@@ -79,9 +82,13 @@ exports.init = function(grunt) {
 
         if (content !== newContent || options.saveUnchanged) {
           grunt.file.write(dest, newContent);
-          grunt.log.writeln('File ' + chalk.cyan(dest) + ' created.');
+          if ( options.debug_mode ) {
+            grunt.log.writeln('File ' + chalk.cyan(dest) + ' created.');
+          }
         } else {
-          grunt.log.writeln('File ' + chalk.cyan(dest) + ' ' + chalk.red('not') + ' created; No replacements found.');
+          if ( options.debug_mode ) {
+            grunt.log.writeln('File ' + chalk.cyan(dest) + ' ' + chalk.red('not') + ' created; No replacements found.');
+          }
         }
 
         return src_done();

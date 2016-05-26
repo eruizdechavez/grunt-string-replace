@@ -19,6 +19,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('string-replace', 'String Replace Task.', function() {
     var done = this.async(),
       options = this.options({
+        debug_mode: false,
         replacements: []
       }),
       replacements;
