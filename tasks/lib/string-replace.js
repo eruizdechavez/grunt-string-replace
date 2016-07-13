@@ -7,7 +7,8 @@
  */
 var util = require('util'),
   async = require('async'),
-  chalk = require('chalk');
+  chalk = require('chalk'),
+  counter = 0;
 
 exports.init = function(grunt) {
   'use strict';
@@ -93,6 +94,9 @@ exports.init = function(grunt) {
       if (err) {
         grunt.log.error(err);
         replace_done(false);
+      }
+      if(options.quiet){
+        grunt.log.writeln(chalk.cyan(counter) + ' files created.');
       }
       replace_done();
     });
