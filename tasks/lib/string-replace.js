@@ -79,7 +79,9 @@ exports.init = function(grunt) {
 
         if (content !== newContent || options.saveUnchanged) {
           grunt.file.write(dest, newContent);
+          if(!options.quiet){
           grunt.log.writeln('File ' + chalk.cyan(dest) + ' created.');
+          }
         } else {
           grunt.log.writeln('File ' + chalk.cyan(dest) + ' ' + chalk.red('not') + ' created; No replacements found.');
         }
