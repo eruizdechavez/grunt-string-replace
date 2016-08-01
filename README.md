@@ -134,7 +134,7 @@ For more details, see Grunt's documentation about [dynamic files object](http://
 
 ### Advanced inline
 
-Since grunt-string-replace is basically a wrapper of [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) you can also provide a function as a replacement pattern instead of a string or a template. To get more details about how to use a function as replacement pattern I recommend you to read [Specifying a function as a parameter](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String/replace#Specifying_a_function_as_a_parameter).
+Since grunt-string-replace is basically a wrapper of [String.prototype.replace](http://www.ecma-international.org/ecma-262/5.1/#sec-15.5.4.11) you can also provide a function as a replacement pattern instead of a string or a template; as a nice added bonus to using a replacement function, grunt-string-replace will provide 2 extra arguments apart from the ones documented in the link below: `src` and `dest`. To get more details about how to use a function as replacement pattern I recommend you to read [Specifying a function as a parameter](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String/replace#Specifying_a_function_as_a_parameter).
 
 We will be reading file names from HTML comments and use the paths later to fetch the content and insert it inside a resulting HTML. Assuming the following setup:
 
@@ -210,6 +210,11 @@ content here
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+
+1.3.0
+  - Fix #39, a typo in the documentation
+  - Inject src and dest into the callback function when replacement is a function; this allows the replacement function to use the old and/or new file paths/names for further processing
+  - Add total files modified and update file created logging to verbose. Contributed by [tHBp](https://github.com/tHBp)
 
 1.2.1
   - Update project URLs
