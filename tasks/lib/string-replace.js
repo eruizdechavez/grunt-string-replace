@@ -7,7 +7,8 @@
  */
 var util = require('util'),
   async = require('async'),
-  chalk = require('chalk');
+  chalk = require('chalk'),
+  counter = 0;
 
 exports.init = function(grunt) {
   'use strict';
@@ -79,7 +80,8 @@ exports.init = function(grunt) {
 
         if (content !== newContent || options.saveUnchanged) {
           grunt.file.write(dest, newContent);
-          grunt.log.writeln('File ' + chalk.cyan(dest) + ' created.');
+          counter+=1;
+          grunt.verbose.writeln('File ' + chalk.cyan(dest) + ' created.');
         } else {
           grunt.log.writeln('File ' + chalk.cyan(dest) + ' ' + chalk.red('not') + ' created; No replacements found.');
         }
@@ -92,6 +94,7 @@ exports.init = function(grunt) {
         grunt.log.error(err);
         replace_done(false);
       }
+        grunt.log.writeln('\n'+ chalk.cyan(counter) + ' files created');
       replace_done();
     });
   };
