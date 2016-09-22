@@ -15,5 +15,11 @@ Replace RegEx, case sensitive
 [test C:regex 006] === not replaced!
 
 Replace RegEx, case insensitive
-[test d:regex 005] === replaced!
-[test D:regex 006] === replaced!
+[test d:regex 007] === replaced!
+[test D:regex 008] === replaced!
+
+Replace RegEx, with template value
+[test e:regex 007] === replaced!
+
+Replace RegEx, with function
+[test f:regex 008] === replaced!

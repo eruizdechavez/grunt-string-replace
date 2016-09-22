@@ -17,3 +17,9 @@ replaced! === replaced!
 Replace RegEx, case insensitive
 replaced! === replaced!
 replaced! === replaced!
+
+Replace RegEx, with template value
+replaced! === replaced!
+
+Replace RegEx, with function
+replaced! === replaced!

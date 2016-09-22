@@ -28,17 +28,17 @@
     "npm": ">= 1.4.15"
   },
   "scripts": {
-    "test": "grunt --verbose",
+    "test": "grunt --verbose --env=test",
     "preversion": "npm test",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
-    "grunt": "^0.4.0",
-    "grunt-contrib-clean": "^0.7.0",
-    "grunt-contrib-copy": "^0.8.0",
-    "grunt-contrib-jshint": "^0.11.2",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt": "^1.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
   },
   "keywords": [
     "gruntplugin",
