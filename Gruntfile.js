@@ -10,6 +10,16 @@ module.exports = function(grunt) {
   'use strict';
 
   grunt.initConfig({
+    base: {
+      env: {
+        test: 'replaced!'
+      }
+    },
+
+    package: {
+      replacement: 'replaced!'
+    },
+
     jshint: {
       options: {
         curly: true,
@@ -78,6 +88,15 @@ module.exports = function(grunt) {
           }, {
             pattern: /\[test d:regex \d{3,}\]/ig,
             replacement: 'replaced!'
+          }, {
+            pattern: /\[test e:regex \d{3,}\]/ig,
+            replacement: '<%= package.replacement %>'
+          }, {
+            pattern: /\[test f:regex \d{3,}\]/g,
+            replacement: function(match, p1) {
+              var env = grunt.option('env').toLowerCase();
+              return grunt.config.get(['base', 'env', env]);
+            }
           }]
         }
       },
@@ -101,6 +120,15 @@ module.exports = function(grunt) {
           }, {
             pattern: /\[test d:regex \d{3,}\]/ig,
             replacement: 'replaced!'
+          }, {
+            pattern: /\[test e:regex \d{3,}\]/ig,
+            replacement: '<%= package.replacement %>'
+          }, {
+            pattern: /\[test f:regex \d{3,}\]/g,
+            replacement: function(match, p1) {
+              var env = grunt.option('env').toLowerCase();
+              return grunt.config.get(['base', 'env', env]);
+            }
           }]
         }
       },
@@ -124,6 +152,15 @@ module.exports = function(grunt) {
           }, {
             pattern: /\[test d:regex \d{3,}\]/ig,
             replacement: 'replaced!'
+          }, {
+            pattern: /\[test e:regex \d{3,}\]/ig,
+            replacement: '<%= package.replacement %>'
+          }, {
+            pattern: /\[test f:regex \d{3,}\]/g,
+            replacement: function(match, p1) {
+              var env = grunt.option('env').toLowerCase();
+              return grunt.config.get(['base', 'env', env]);
+            }
           }]
         }
       }
