@@ -95,6 +95,7 @@ exports.init = function(grunt) {
         replace_done(false);
       }
         grunt.log.writeln('\n'+ chalk.cyan(counter) + ' files created');
+      counter = 0;
       replace_done();
     });
   };
