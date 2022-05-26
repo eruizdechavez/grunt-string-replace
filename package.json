@@ -47,7 +47,7 @@
     "regex"
   ],
   "dependencies": {
-    "async": "^2.0.0",
+    "async": "^2.6.4",
     "chalk": "^1.0.0"
   }
 }
