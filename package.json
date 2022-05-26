@@ -1,7 +1,7 @@
 {
   "name": "grunt-string-replace",
   "description": "Replaces strings on files by using string or regex patterns. Attempts to be a String.prototype.replace adapter task for your grunt project.",
-  "version": "1.3.1",
+  "version": "1.3.2-0",
   "homepage": "https://github.com/eruizdechavez/grunt-string-replace",
   "author": {
     "name": "Erick Ruiz de Chavez",
