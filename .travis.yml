@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "14"
   - "16"
+  - "17"
 install:
   - npm update -g npm
   - npm install -g grunt-cli
